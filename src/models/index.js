@@ -3,7 +3,7 @@ var path = require('path');
 var Sequelize = require('sequelize');
 var basename = path.basename(__filename);
 var env = process.env.NODE_ENV || 'development';
-var config = require(__dirname + '/../config/database-config.js')[env];
+var config = require(__dirname + '/../config/database-config.js');
 var db = {};
 
 
@@ -19,10 +19,6 @@ fs
     var model = sequelize['import'](path.join(__dirname, file));
     db[model.name] = model;
   });
-
-/**
- * Alteracao
- */
 
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {

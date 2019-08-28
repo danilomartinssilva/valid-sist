@@ -12,7 +12,7 @@ class AuthController {
       }
     })
 
-    return res
+    return res.json({ result: empresas_list, status: true }).status(200)
 
 
 

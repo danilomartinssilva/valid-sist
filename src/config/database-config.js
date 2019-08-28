@@ -8,19 +8,19 @@ module.exports = {
       operatorsAliases: Sequelize.Op,
       dialect: "mysql",
     }, */
-  ["development"]: {
-    username: "gerenciaauticomp",
-    password: "934Q#5mePDML",
-    database: "BDValidcodePRD",
-    host: "sqlvalidcodeprd.database.windows.net",
-    operatorsAliases: Sequelize.Op,
-    dialect: "mssql",
-    dialectOptions: {
-      options: {
-        encrypt: true,
-      }
-    }
 
-  },
+  username: "gerenciaauticomp",
+  password: "934Q#5mePDML",
+  database: "BDValidcodePRD",
+  host: "sqlvalidcodeprd.database.windows.net",
+  operatorsAliases: Sequelize.Op,
+  dialect: "mssql",
+  dialectOptions: {
+    options: {
+      encrypt: true,
+    }
+  }
+
+
 
 };
