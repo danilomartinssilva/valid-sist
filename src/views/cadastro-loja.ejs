@@ -1,0 +1,77 @@
+<%- include('./_partials/header'); -%>
+<section class="header">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <center><img src="imagens/logo.png"></center>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section class="titulosec">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="titulorel">Cadastro de Empresas</h3>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="botoes">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-6 col-xs-12">
+        <form class="formbusca" action="" method="POST">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-3 col-sm-12">
+                <select name="loja" class="form-control">
+                  <!--   <?php
+                                    $consulta = $conn->query("SELECT * FROM lojas WHERE Id_empresa='{$_SESSION['Id_empresa']}' ORDER by Descricao ");
+                                    while ($linha = $consulta->fetch(PDO::FETCH_ASSOC)) {
+                                        echo "<option value='{$linha['Id_empresa']}'>{$linha['Descricao']}</option>";
+                                    }
+                                    ?> -->
+
+                </select>
+              </div>
+              <div class="col-md-2 col-sm-12">
+                <input type="hidden" name="pesquisa" value="buscar">
+                <input type="submit" value="Encontrar" class="btn btn-success">
+              </div>
+              <div class="col-md-2 col-sm-12">
+                <a href="adicionar-loja.php"></a><button type="button" class="btn btn-success">Adicionar</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Código</th>
+            <th scope="col">Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!--  <?php
+                    $criterio = "Lojas.Id_empresa ='{$_SESSION['Id_empresa']}' ";
+
+                    $consulta = $conn->query("SELECT TOP 50 * FROM Lojas WHERE {$criterio}");
+                    while ($linha = $consulta->fetch(PDO::FETCH_ASSOC)) {
+
+                        echo "<tr>
+                                  <td>{$linha['Cod_loja']}</td>
+                                  <td>{$linha['Descricao']}</td>                      
+                                </tr>";
+                    }
+                    ?> -->
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+<%- include('./_partials/footer'); -%>

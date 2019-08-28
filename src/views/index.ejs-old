@@ -1,0 +1,11 @@
+<% if (!user) { %>
+<h2>Welcome! Please log in.</h2>
+<a href="/login/?p=B2C_1_PolEntradaB2C">Sign In</a>
+<a href="/login/?p=B2C_1_PoliticaValidcodeB2C">Sign Up</a>
+<a href="/login/?p=B2C_1_PolSenhaB2C">Update Profile</a>
+<a href="/login/?p=B2C_1_updateprofile">Reset Password</a>
+<% } else { %>
+<h2>Hello, <%= user.emails[0] %>.</h2>
+<a href="/account">Account Info</a></br>
+<a href="/logout">Log Out</a>
+<% } %>
