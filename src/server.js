@@ -287,5 +287,5 @@ app.get('/root', AuthController.root)
 
 
 
-app.listen(3200)
+app.listen(process.env.PORT || 3200)
 
