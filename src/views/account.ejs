@@ -1,6 +1,6 @@
 <%- include('./_partials/header'); -%>
 
-<section class="header">
+<!-- <section class="header">
   <div class="container">
     <div class="row">
       <div class="col-md-4">
@@ -25,14 +25,110 @@
       <div class="col-md-12">
 
 
+        <a href="/logout" class="btn btn-primary btn-block">Sair</a>
+        <div id="json"></div>
+      </div>
 
+    </div>
+  </div>
+</section> -->
+<section class="header">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <center><img src="imagens/logo.png"></center>
+      </div>
+      <div class="col-md-8">
+        <nav class="navbar navbar-expand-lg navbar-light ">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-        <!--         <p>Profile ID: <%= user.displayName %></p> -->
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Cadastros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Invetários</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Lotes</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Relatórios</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Ajuda</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="titulosec">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="titulorel">Relatórios</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="titulorel">Seja bem-vindo <%- user.displayName %> - <%- user.emails[0] -%> </h3>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="botoes">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h3 class="titulo">Gestão de Inventários</h3>
+        <center>
+          <button type="button" class="btn btn-success quadrado">Divergência de estoque</button>
+          <button type="button" class="btn btn-success quadrado">Apuração simples</button>
+          <button type="button" class="btn btn-success quadrado">Itens não contados</button>
+          <button type="button" class="btn btn-success quadrado">Itens não cadastrados</button>
+          <a href="#"><button type="button" class="btn btn-success quadrado">Ruptura de
+              loja/depósito</button></a>
+        </center>
+      </div>
 
-
-        <!--  <%- JSON.stringify(user) %> -->
-        <p></p>
-        <!-- <a href="/logout">Log Out</a> -->
+      <div class="col-md-6">
+        <h3 class="titulo">Gestão de Ativos</h3>
+        <center>
+          <button type="button" class="btn btn-success quadrado">Posição estoque</button>
+          <button type="button" class="btn btn-success quadrado">Blocagem</button>
+          <button type="button" class="btn btn-success quadrado">Localização</button>
+          <button type="button" class="btn btn-success quadrado">Acima do máximo</button>
+          <button type="button" class="btn btn-success quadrado">Abaixo do mínimo</button>
+          <button type="button" class="btn btn-success quadrado">Movimentações</button>
+        </center>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="contato">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <center><img src="imagens/logo.png"></center>
+        <h4 class="dadoscontato"><i class="fa fa-phone-square green" aria-hidden="true"></i> (11) 4130-7713</h4>
+        <h4 class="dadoscontato"><i class="fa fa-envelope green" aria-hidden="true"></i> comercial@validcode.com.br</h4>
+        <h4 class="dadoscontato"><i class="fa fa-map-marker green" aria-hidden="true"></i> Avenida Ibiúna, 737 - Vila
+          Aricanduva - 03507-010 - São Paulo/SP</h4>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="direitos">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
 
 
         <a href="/logout" class="btn btn-primary btn-block">Sair</a>
@@ -40,6 +136,13 @@
       </div>
 
     </div>
+    <div class="row">
+      <div class="col-md-12">
+        <p class="direitotexto">© 2019 Validcode. Todos os direitos reservados.</p>
+        <center><img src="imagens/maples.png"></center>
+      </div>
+    </div>
   </div>
 </section>
+
 <%- include('./_partials/footer'); -%>
