@@ -42,6 +42,15 @@ var MongoStore = require('connect-mongo')(expressSession);
 var mongoose = require('mongoose');
 const path = require('path')
 
+/**
+ * CONTROLLER
+ */
+
+const LojasController = require('../src/controllers/LojasController')
+
+/**
+ * FINAL CONTROLLER
+ */
 // Start QuickStart here
 
 var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
@@ -219,9 +228,19 @@ app.get('/info', ensureAuthenticated, function (req, res) {
   res.render('info', { user: req.user });
 });
 
+/**
+ * Loja
+ */
+/* 
 app.get('/cadastro-loja', ensureAuthenticated, function (req, res) {
   res.render('cadastro-loja', { user: req.user })
-})
+}) */
+
+app.get('/cadastr-loja', ensureAuthenticated, LojasController.form)
+
+/**
+ * Fim Loja
+ */
 
 app.get('/login',
   function (req, res, next) {
