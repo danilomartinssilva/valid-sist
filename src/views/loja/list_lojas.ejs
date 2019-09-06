@@ -1,4 +1,4 @@
-<%- include('./_partials/header'); -%>
+<%- include('./../_partials/header'); -%>
 <section class="header">
   <div class="container">
     <div class="row">
@@ -26,14 +26,29 @@
           <div class="container">
             <div class="row">
               <div class="col-md-3 col-sm-12">
-                <p><%- JSON.stringify(lojas) -%></p>
+                <!-- <p><%- JSON.stringify(lojas) -%></p> -->
                 <select name="loja" class="form-control">
-                  <!--   <?php
+                  <% for(var i=0; i<lojas.length; i++) {%>
+
+
+                  <option value=<% lojas[i].id %></option><%= lojas[i].Descricao %> </option> <!-- <h1
+                    class="userInput">
+                    <%= lojas[i].Descricao %></h1> -->
+
+
+
+
+                    <%} %>
+
+
+                    <!--   <?php
                                     $consulta = $conn->query("SELECT * FROM lojas WHERE Id_empresa='{$_SESSION['Id_empresa']}' ORDER by Descricao ");
                                     while ($linha = $consulta->fetch(PDO::FETCH_ASSOC)) {
                                         echo "<option value='{$linha['Id_empresa']}'>{$linha['Descricao']}</option>";
                                     }
                                     ?> -->
+
+
 
                 </select>
               </div>
@@ -75,4 +90,4 @@
     </div>
   </div>
 </section>
-<%- include('./_partials/footer'); -%>
+<%- include('./../_partials/footer'); -%>

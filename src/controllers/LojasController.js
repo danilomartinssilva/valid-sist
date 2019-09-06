@@ -15,18 +15,16 @@ class LojasController {
     if (!lojas.length) {
       return res.json({ status: false, message: 'ver as lojas' });
     }
-    return res.json({ status: true, result: lojas })
+    return res.render('loja/list_lojas', { lojas: lojas, user: req.user })
+
   }
   async form_add(req, res) {
 
   }
   async form(req, res) {
-    const lojas = await Lojas.findAll({})
-    if (!lojas.length) {
-      return res.json({ status: false, message: 'ver as lojas' });
-    }
-    return res.render('cadastr-loja', { lojas: lojas, user: req.user })
 
+
+    return res.render('loja/form');
 
   }
 }

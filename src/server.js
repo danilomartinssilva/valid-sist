@@ -1,25 +1,4 @@
-/**
- * Copyright (c) Microsoft Corporation
- *  All Rights Reserved
- *  MIT License
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this
- * software and associated documentation files (the 'Software'), to deal in the Software
- * without restriction, including without limitation the rights to use, copy, modify,
- * merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
- * permit persons to whom the Software is furnished to do so, subject to the following
- * conditions:
- *
- * The above copyright notice and this permission notice shall be
- * included in all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
- * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS
- * OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
- * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT
- * OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
+
 
 'use strict';
 
@@ -47,6 +26,7 @@ const path = require('path')
  */
 
 const LojasController = require('../src/controllers/LojasController')
+const HomeController = require('../src/controllers/HomeController')
 
 /**
  * FINAL CONTROLLER
@@ -59,29 +39,12 @@ var log = bunyan.createLogger({
   name: 'Microsoft OIDC Example Web Application'
 });
 
-/**CONTROLLERS
- * 
- * 
- * 
- */
+
 
 const AuthController = require('./controllers/AuthController')
 
 
-/**
- * 
- */
 
-/******************************************************************************
- * Set up passport in the app 
- ******************************************************************************/
-
-//-----------------------------------------------------------------------------
-// To support persistent login sessions, Passport needs to be able to
-// serialize users into and deserialize users out of the session.  Typically,
-// this will be as simple as storing the user ID when serializing, and finding
-// the user by ID when deserializing.
-//-----------------------------------------------------------------------------
 passport.serializeUser(function (user, done) {
   done(null, user.oid);
 });
@@ -106,23 +69,7 @@ var findByOid = function (oid, fn) {
   return fn(null, null);
 };
 
-//-----------------------------------------------------------------------------
-// Use the OIDCStrategy within Passport.
-// 
-// Strategies in passport require a `verify` function, which accepts credentials
-// (in this case, the `oid` claim in id_token), and invoke a callback to find
-// the corresponding user object.
-// 
-// The following are the accepted prototypes for the `verify` function
-// (1) function(iss, sub, done)
-// (2) function(iss, sub, profile, done)
-// (3) function(iss, sub, profile, access_token, refresh_token, done)
-// (4) function(iss, sub, profile, access_token, refresh_token, params, done)
-// (5) function(iss, sub, profile, jwtClaims, access_token, refresh_token, params, done)
-// (6) prototype (1)-(5) with an additional `req` parameter as the first parameter
-//
-// To do prototype (6), passReqToCallback must be set to true in the config.
-//-----------------------------------------------------------------------------
+
 passport.use(new OIDCStrategy({
   identityMetadata: config.creds.identityMetadata,
   clientID: config.creds.clientID,
@@ -217,30 +164,26 @@ function ensureAuthenticated(req, res, next) {
 };
 
 app.get('/', function (req, res) {
+
   res.render('index', { user: req.user });
 });
 
 // '/account' is only available to logged in user
-app.get('/account', ensureAuthenticated, function (req, res) {
-  res.render('account', { user: req.user });
-});
+app.get('/account', ensureAuthenticated, HomeController.account)
+
 app.get('/info', ensureAuthenticated, function (req, res) {
   res.render('info', { user: req.user });
 });
 
-/**
- * Loja
- */
-/* 
-app.get('/cadastro-loja', ensureAuthenticated, function (req, res) {
-  res.render('cadastro-loja', { user: req.user })
-}) */
+/**endpoints */
 
-app.get('/cadastr-loja', ensureAuthenticated, LojasController.form)
+app.get('/index', ensureAuthenticated, HomeController.show)
+app.get('/lojas', ensureAuthenticated, LojasController.list)
+app.get('/lojas-add-form', ensureAuthenticated, LojasController.form)
 
-/**
- * Fim Loja
- */
+/**fim */
+
+
 
 app.get('/login',
   function (req, res, next) {
