@@ -21,7 +21,13 @@ class LojasController {
 
   }
   async form(req, res) {
-    res.render('cadastro-loja', { user: req.user })
+    const lojas = await Lojas.findAll({})
+    if (!lojas.length) {
+      return res.json({ status: false, message: 'ver as lojas' });
+    }
+    return res.render('cadastr-loja', { lojas: lojas, user: req.user })
+
+
   }
 }
 
