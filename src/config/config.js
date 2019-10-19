@@ -15,6 +15,7 @@ exports.creds = {
   responseMode: 'form_post',
 
   // Required, the reply URL registered in AAD for your app
+  //redirectUrl: 'http://localhost:3200/auth/openid/return',
   redirectUrl: 'https://validcodeprd02.azurewebsites.net/auth/openid/return',
 
   // Required if we use http for redirectUrl
@@ -70,6 +71,10 @@ exports.creds = {
 // The url you need to go to destroy the session with AAD, 
 // replace <tenant_name> with your tenant name, and
 // replace <signin_policy_name> with your signin policy name.
+/* exports.destroySessionUrl =
+  'https://login.microsoftonline.com/B2CValidcodePRD.onmicrosoft.com/oauth2/v2.0/logout' +
+  '?p=B2C_1_PoliticaValidcodeB2C' +
+  '&post_logout_redirect_uri=http://localhost:3200/'; */
 exports.destroySessionUrl =
   'https://login.microsoftonline.com/B2CValidcodePRD.onmicrosoft.com/oauth2/v2.0/logout' +
   '?p=B2C_1_PoliticaValidcodeB2C' +

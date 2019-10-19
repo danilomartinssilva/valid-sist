@@ -1,13 +1,20 @@
+const uuid = require('uuid/v4'); // ES5
 
 
 module.exports = (sequelize, DataTypes) => {
   var Operadors = sequelize.define('Operadors', {
-    id: {
-      type: DataTypes.STRING(4000),
+    Id: {
 
-      primaryKey: true
+      primaryKey: true,
+      defaultValue: function () {
+        return uuid()
+      },
+      type: DataTypes.UUID,
     },
     Id_empresa: {
+      type: DataTypes.STRING(4000)
+    },
+    Identificacao: {
       type: DataTypes.STRING(4000)
     },
 
@@ -23,6 +30,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     Id_perfil: {
       type: DataTypes.STRING(4000)
+    },
+    User_userid: {
+      type: DataTypes.STRING(4000)
     }
 
 
@@ -30,6 +40,7 @@ module.exports = (sequelize, DataTypes) => {
 
   }, {
     timestamps: false,
+    hasTrigger: true,
     tableName: 'Operadors',
     /*   hooks: {
         beforeCreate: (user) => {

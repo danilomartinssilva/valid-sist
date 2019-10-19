@@ -12,20 +12,25 @@
       ,[CreatedAt]
       ,[UpdatedAt]
       ,[Deleted] */
+const uuid = require('uuid/v4'); // ES5
 
 module.exports = (sequelize, DataTypes) => {
   var Concorrentes = sequelize.define('Concorrentes', {
-    id: {
-      type: DataTypes.STRING(4000),
+    Id: {
 
-      primaryKey: true
-    },
-    Tipo: {
-      type: DataTypes.INTEGER
+      primaryKey: true,
+      defaultValue: function () {
+        return uuid()
+      },
+      type: DataTypes.UUID,
     },
 
     Codigo: {
       type: DataTypes.STRING(4000)
+    },
+    Id_empresa: {
+      type: DataTypes.STRING(4000)
+
     },
     Descricao: {
       type: DataTypes.STRING(4000)
@@ -36,6 +41,7 @@ module.exports = (sequelize, DataTypes) => {
 
   }, {
     timestamps: false,
+    hasTrigger: true,
     tableName: 'Concorrentes',
     /*   hooks: {
         beforeCreate: (user) => {

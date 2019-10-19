@@ -27,6 +27,10 @@ const path = require('path')
 
 const LojasController = require('../src/controllers/LojasController')
 const HomeController = require('../src/controllers/HomeController')
+const EmpresaController = require('../src/controllers/EmpresasController');
+const ConcorrentesController = require('../src/controllers/ConcorrentesController');
+const OperadorsController = require('../src/controllers/OperadorsController');
+
 
 /**
  * FINAL CONTROLLER
@@ -140,24 +144,12 @@ if (config.useMongoDBSessionStore) {
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Initialize Passport!  Also use passport.session() middleware, to support
-// persistent login sessions (recommended).
+
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(app.router);
 app.use(express.static(path.resolve(__dirname, 'public')));
 
-//-----------------------------------------------------------------------------
-// Set up the route controller
-//
-// 1. For 'login' route and 'returnURL' route, use `passport.authenticate`. 
-// This way the passport middleware can redirect the user to login page, receive
-// id_token etc from returnURL.
-//
-// 2. For the routes you want to check if user is already logged in, use 
-// `ensureAuthenticated`. It checks if there is an user stored in session, if not
-// it will call `passport.authenticate` to ask for user to log in.
-//-----------------------------------------------------------------------------
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/login');
@@ -168,7 +160,7 @@ app.get('/', function (req, res) {
   res.render('index', { user: req.user });
 });
 
-// '/account' is only available to logged in user
+
 app.get('/account', ensureAuthenticated, HomeController.account)
 
 app.get('/info', ensureAuthenticated, function (req, res) {
@@ -180,6 +172,12 @@ app.get('/info', ensureAuthenticated, function (req, res) {
 app.get('/index', ensureAuthenticated, HomeController.show)
 app.get('/lojas', ensureAuthenticated, LojasController.list)
 app.get('/lojas-add-form', ensureAuthenticated, LojasController.form)
+app.post('/lojas', ensureAuthenticated, LojasController.create)
+app.get('/empresas', ensureAuthenticated, EmpresaController.list)
+app.get('/concorrentes', ensureAuthenticated, ConcorrentesController.list)
+app.get('/concorrentes-add', ensureAuthenticated, ConcorrentesController.form)
+app.post('/concorrentes', ensureAuthenticated, ConcorrentesController.store)
+app.get('/operadores', ensureAuthenticated, OperadorsController.list)
 
 /**fim */
 
@@ -201,10 +199,7 @@ app.get('/login',
     res.redirect('/');
   });
 
-// 'GET returnURL'
-// `passport.authenticate` will try to authenticate the content returned in
-// query (such as authorization code). If authentication fails, user will be
-// redirected to '/' (home page); otherwise, it passes to the next middleware.
+
 app.get('/auth/openid/return',
   function (req, res, next) {
     passport.authenticate('azuread-openidconnect',
@@ -219,10 +214,6 @@ app.get('/auth/openid/return',
     res.redirect('/');
   });
 
-// 'POST returnURL'
-// `passport.authenticate` will try to authenticate the content returned in
-// body (such as authorization code). If authentication fails, user will be
-// redirected to '/' (home page); otherwise, it passes to the next middleware.
 app.post('/auth/openid/return',
   function (req, res, next) {
     passport.authenticate('azuread-openidconnect',
@@ -237,7 +228,6 @@ app.post('/auth/openid/return',
     res.redirect('/account');
   });
 
-// 'logout' route, logout from passport, and destroy the session with AAD.
 app.get('/logout', function (req, res) {
   req.session.destroy(function (err) {
     req.logOut();

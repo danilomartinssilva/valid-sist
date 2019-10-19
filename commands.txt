@@ -1,0 +1,3 @@
+https://validcodeprd02.azurewebsites.net/auth/openid/return
+
+http://localhost:3200/auth/openid/return

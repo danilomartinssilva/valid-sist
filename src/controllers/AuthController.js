@@ -7,18 +7,10 @@ class AuthController {
 
 
     const empresas_list = await Empresas.findAll({
-      where: {
-        Estado: "MG"
-      }
+
     })
 
     return res.json({ result: empresas_list, status: true }).status(200)
-
-
-
-
-
-
 
   }
 

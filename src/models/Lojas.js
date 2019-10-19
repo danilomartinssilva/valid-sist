@@ -13,12 +13,18 @@
       ,[UpdatedAt]
       ,[Deleted] */
 
+const uuid = require('uuid/v4'); // ES5
+const nSequelize = require('../models').Sequelize;
+
 module.exports = (sequelize, DataTypes) => {
   var Lojas = sequelize.define('Lojas', {
     id: {
-      type: DataTypes.STRING(4000),
 
-      primaryKey: true
+      primaryKey: true,
+      defaultValue: function () {
+        return uuid()
+      },
+      type: DataTypes.UUID,
     },
 
 
@@ -28,6 +34,9 @@ module.exports = (sequelize, DataTypes) => {
 
     Descricao: {
       type: DataTypes.STRING(4000)
+    },
+    Id_empresa: {
+      type: DataTypes.STRING(4000),
     },
 
     Deleted: {
@@ -39,14 +48,16 @@ module.exports = (sequelize, DataTypes) => {
 
   }, {
     timestamps: false,
+    hasTrigger: true,
     tableName: 'Lojas',
-    /*   hooks: {
-        beforeCreate: (user) => {
-          var date = require('../utils/date');
-          user.updated_at = date.getActualDate();
-        }
- 
-      } */
+    hooks: {
+      /*       beforeCreate: (user) => {
+              var date = require('../utils/date');
+              user.createdAt = date.getActualDate();
+              user.UpdatedAt = date.getActualDate();
+            }
+       */
+    }
   });
 
 

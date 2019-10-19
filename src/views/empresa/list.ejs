@@ -1,0 +1,68 @@
+<%- include('./../_partials/header'); -%>
+<section class="header">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <center><img src="imagens/logo.png"></center>
+      </div>
+
+    </div>
+  </div>
+</section>
+<section class="titulosec">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="titulorel">Dados da Empresa</h3>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="botoes">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-6 col-xs-12">
+        <form class="formbusca" action="" method="POST">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-3 col-sm-12">
+
+
+              </div>
+              <div class="col-md-2 col-sm-12">
+                <input type="hidden" name="pesquisa" value="buscar">
+                <!--   <input type="submit" value="Encontrar" class="btn btn-success"> -->
+              </div>
+
+            </div>
+          </div>
+        </form>
+        <div class="row">
+
+          <h2>Razão Social: <%= empresa.Nome_razao %></h2>
+
+        </div>
+        <div class="row">
+          <h2>Email: <%= empresa.Email %></h2>
+
+
+        </div>
+        <div class="row">
+          <h2>Nome do Contato: <%= empresa.Nome_contato %></h2>
+
+        </div>
+        <div class="row">
+          <h2>Logradouro: <%= empresa.Logradouro %> - Cidade: <%= empresa.Cidade %> - <%= empresa.Estado %></h2>
+        </div>
+      </div>
+
+
+
+      <div class="col-md-2 col-sm-12">
+        <a href="/lojas-add-form" class="btn btn-success" style="margin-left: 0px;">Adicionar Loja</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+<%- include('./../_partials/footer'); -%>
