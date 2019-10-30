@@ -1,3 +1,5 @@
+
+
 exports.creds = {
   // Required. It must be tenant-specific endpoint, common endpoint is not supported to use B2C
   // feature.
@@ -15,8 +17,8 @@ exports.creds = {
   responseMode: 'form_post',
 
   // Required, the reply URL registered in AAD for your app
-  //redirectUrl: 'http://localhost:3200/auth/openid/return',
-  redirectUrl: 'https://validcodeprd02.azurewebsites.net/auth/openid/return',
+  //redirectUrl: 'http://localhost:3200/auth/openid/return',//DEV
+  redirectUrl: 'https://validcodeprd02.azurewebsites.net/auth/openid/return',//PRODUÇÃO
 
   // Required if we use http for redirectUrl
   allowHttpForRedirectUrl: true,
@@ -78,7 +80,12 @@ exports.creds = {
 exports.destroySessionUrl =
   'https://login.microsoftonline.com/B2CValidcodePRD.onmicrosoft.com/oauth2/v2.0/logout' +
   '?p=B2C_1_PoliticaValidcodeB2C' +
-  '&post_logout_redirect_uri=https://validcodeprd02.azurewebsites.net/';
+  '&post_logout_redirect_uri=https://validcodeprd02.azurewebsites.net/';  //PRODÇÃO
+
+/* exports.destroySessionUrl =
+  'https://login.microsoftonline.com/B2CValidcodePRD.onmicrosoft.com/oauth2/v2.0/logout' +
+  '?p=B2C_1_PoliticaValidcodeB2C' +
+  '&post_logout_redirect_uri=http://localhost:3200'; *///DEV
 
 // If you want to use the mongoDB session store for session middleware; otherwise we will use the default
 // session store provided by express-session.

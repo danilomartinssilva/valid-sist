@@ -30,6 +30,7 @@ const HomeController = require('../src/controllers/HomeController')
 const EmpresaController = require('../src/controllers/EmpresasController');
 const ConcorrentesController = require('../src/controllers/ConcorrentesController');
 const OperadorsController = require('../src/controllers/OperadorsController');
+const InventariosController = require('../src/controllers/InventariosController')
 
 
 /**
@@ -173,11 +174,17 @@ app.get('/index', ensureAuthenticated, HomeController.show)
 app.get('/lojas', ensureAuthenticated, LojasController.list)
 app.get('/lojas-add-form', ensureAuthenticated, LojasController.form)
 app.post('/lojas', ensureAuthenticated, LojasController.create)
+app.get('/lojas/list', ensureAuthenticated, LojasController.listAll)
 app.get('/empresas', ensureAuthenticated, EmpresaController.list)
 app.get('/concorrentes', ensureAuthenticated, ConcorrentesController.list)
 app.get('/concorrentes-add', ensureAuthenticated, ConcorrentesController.form)
 app.post('/concorrentes', ensureAuthenticated, ConcorrentesController.store)
 app.get('/operadores', ensureAuthenticated, OperadorsController.list)
+app.get('/inventarios-add', ensureAuthenticated, InventariosController.form)
+app.post('/inventarios', ensureAuthenticated, InventariosController.add)
+app.get('/inventarios', ensureAuthenticated, InventariosController.list)
+
+
 
 /**fim */
 

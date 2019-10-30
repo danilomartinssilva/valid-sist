@@ -37,6 +37,29 @@ class LojasController {
     return res.render('loja/list_lojas', { lojas: lojas })
 
   }
+  async listAll(req, res) {
+    const info_user = await require('../helper/retornaInfoOperador')(req.user.oid);
+    const lojas = await Lojas.findAll({
+      where: {
+        Id_empresa: info_user.Id_empresa
+      }
+    })
+    if (!lojas.length) {
+      return res.json({ status: false, message: 'ver as lojas' });
+    }
+    return res.json({
+      result: lojas,
+      status: true
+    })
+      .status(200)
+  }
+
+  async listAll(req, res) {
+
+  }
+
+
+
   async form_add(req, res) {
 
   }
