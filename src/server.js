@@ -31,6 +31,7 @@ const EmpresaController = require('../src/controllers/EmpresasController');
 const ConcorrentesController = require('../src/controllers/ConcorrentesController');
 const OperadorsController = require('../src/controllers/OperadorsController');
 const InventariosController = require('../src/controllers/InventariosController')
+const LocalsController = require('../src/controllers/LocalsController');
 
 
 /**
@@ -183,7 +184,9 @@ app.get('/operadores', ensureAuthenticated, OperadorsController.list)
 app.get('/inventarios-add', ensureAuthenticated, InventariosController.form)
 app.post('/inventarios', ensureAuthenticated, InventariosController.add)
 app.get('/inventarios', ensureAuthenticated, InventariosController.list)
-
+app.post('/locals', ensureAuthenticated, LocalsController.store)
+app.get('/locals', ensureAuthenticated, LocalsController.list)
+app.get('/locals-add', ensureAuthenticated, LocalsController.form)
 
 
 /**fim */

@@ -1,0 +1,76 @@
+<%- include('./../_partials/header'); -%>
+<section class="header">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <center><img src="imagens/logo.png"></center>
+      </div>
+      <div class="col-md-8">
+        <nav class="navbar navbar-expand-lg navbar-light ">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="cadastros.php">Cadastros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Invetários</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Lotes</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="relatorios.php">Relatórios</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Ajuda</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="titulosec">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="titulorel">Adicionar Locais</h3>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="botoes">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <form class="formbusca" action="/locals" method="POST">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Código do Local</label>
+                <input type="txt" class="form-control" placeholder="Código do Concorrente" name="codigo">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Descrição</label>
+                <input type="txt" class="form-control" placeholder="Descrição" name="descricao">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 col-sm-12">
+            <a href="#"></a><button type="submit" class="btn btn-success">Salvar</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+<%- include('./../_partials/footer'); -%>
