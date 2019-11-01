@@ -33,6 +33,7 @@ const OperadorsController = require('../src/controllers/OperadorsController');
 const InventariosController = require('../src/controllers/InventariosController')
 const LocalsController = require('../src/controllers/LocalsController');
 const DispositivosController = require('../src/controllers/DispositivosController');
+const LotesController = require('../src/controllers/LotesController')
 
 
 
@@ -192,6 +193,9 @@ app.get('/locals-add', ensureAuthenticated, LocalsController.form)
 app.get('/dispositivos', ensureAuthenticated, DispositivosController.list)
 app.post('/dispositivos', ensureAuthenticated, DispositivosController.store)
 app.get('/dispositivos-add', ensureAuthenticated, DispositivosController.form)
+app.get('/lotes-add', ensureAuthenticated, LotesController.form)
+app.get('/lotes', ensureAuthenticated, LotesController.list)
+app.post('/lotes', ensureAuthenticated, LotesController.store)
 
 
 /**fim */

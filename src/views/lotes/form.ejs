@@ -40,7 +40,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h3 class="titulorel">Adicionar Dispositivo</h3>
+        <h3 class="titulorel">Adicionar Lote</h3>
       </div>
     </div>
   </div>
@@ -49,67 +49,73 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <form class="formbusca" action="/dispositivos" method="POST">
+        <form class="formbusca" action="/lotes" method="POST">
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
+                <label for="exampleFormControlInput1">Código </label>
+                <input type="txt" class="form-control" placeholder="00001" name="codigo">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
                 <label for="exampleFormControlInput1">Descrição</label>
-                <input type="text" class="form-control" placeholder="Descrição" name="descricao">
+                <input type="txt" class="form-control" placeholder="Descrição" name="descricao">
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <label for="exampleFormControlInput1">Descrição do Tipo de Sistema - Versão</label>
-                <input type="text" class="form-control" placeholder="Descrição" name="desc_tipo_sistema_versao">
+                <label for="exampleFormControlInput1">Área</label>
+                <input type="txt" class="form-control" placeholder="12" name="area">
               </div>
             </div>
+            <!--  <div class="col-md-6">
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Tipo</label>
+
+                <select class="form-control" name="tipo">
+                  <option value="1">Geral</option>
+                  <option value="2">Parcial</option>
+                  <option value="3">Preço</option>
+                  <option value="4">Presença</option>
+                  <option value="5">Reposição</option>
+                  <option value="6">Pesquisa</option>
+                </select>
+              </div>
+            </div> -->
             <div class="col-md-6">
               <div class="form-group">
-                <label for="exampleFormControlInput1">Licença</label>
-                <select name="id_licenca" class="form-control">
+                <label for="exampleFormControlInput1">Inventario</label>
 
-                  <% for(var i=0;i<licencas.length; i++) {%>
+                <select class="form-control" name="id_inventario">
+                  <!--  <option value="1">Geral</option>
+                  <option value="2">Parcial</option>
+                  <option value="3">Preço</option>
+                  <option value="4">Presença</option>
+                  <option value="5">Reposição</option>
+                  <option value="6">Pesquisa</option> -->
 
-                  <option value="<%= licencas[i].Id %>"> Licença - Qtd Dispositivos-
-                    <%= licencas[i].Qtd_dispositivos %>
-                  </option>
+                  <% for(var i=0;i<info_inventarios.length; i++) {%>
 
+                  <option value="<%= info_inventarios[i].Id %>"><%= info_inventarios[i].Descricao %></option>
 
 
 
                   <%} %>
-
                 </select>
-
-                <!--  <label for="exampleFormControlInput1">Id licença</label>
-                <input type="text" class="form-control" placeholder="00001" name="id_licenca"> -->
-
               </div>
             </div>
+
+
             <div class="col-md-6">
               <div class="form-group">
-                <label for="exampleFormControlInput1">Serial</label>
-                <input type="text" class="form-control" placeholder="00001" name="serial">
+                <label for="exampleFormControlInput1">Status</label>
+                <select class="form-control" name="status">
+                  <option value="1">Aberto</option>
+                  <option value="2">Fechado</option>
+                </select>
               </div>
             </div>
-            <!--          <div class="col-md-6">
-              <div class="form-group">
-                <label for="exampleFormControlInput1">Data e Hora de cadastro</label>
-                <input type="datetime" class="form-control" placeholder="00001" name="dta_cadastro">
-              </div>
-            </div> -->
-            <!--    <div class="col-md-6">
-              <div class="form-group">
-                <label for="exampleFormControlInput1">Data e Hora de cadastro</label>
-                <input type="datetime" class="form-control" placeholder="00001" name="dta_cadastro">
-              </div>
-            </div>
- -->
-
-
-
-
-
           </div>
           <div class="col-md-2 col-sm-12">
             <a href="#"></a><button type="submit" class="btn btn-success">Salvar</button>

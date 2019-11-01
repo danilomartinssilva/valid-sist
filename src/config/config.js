@@ -81,8 +81,8 @@ exports.destroySessionUrl =
   'https://login.microsoftonline.com/B2CValidcodePRD.onmicrosoft.com/oauth2/v2.0/logout' +
   '?p=B2C_1_PoliticaValidcodeB2C' +
   '&post_logout_redirect_uri=https://validcodeprd02.azurewebsites.net/';   //PRODÇÃO
-
-/* exports.destroySessionUrl =
+/*
+exports.destroySessionUrl =
   'https://login.microsoftonline.com/B2CValidcodePRD.onmicrosoft.com/oauth2/v2.0/logout' +
   '?p=B2C_1_PoliticaValidcodeB2C' +
   '&post_logout_redirect_uri=http://localhost:3200';  */ //DEV

@@ -1,4 +1,5 @@
 const uuid = require('uuid/v4'); // ES5
+const Sequelize = require('sequelize');
 
 /*
  ,[Id_empresa]
@@ -13,6 +14,10 @@ const uuid = require('uuid/v4'); // ES5
       ,[UpdatedAt]
       ,[Deleted]
       ,[Id_licenca]*/
+
+Sequelize.DATE.prototype._stringify = function _stringify(date, options) {
+  return this._applyTimezone(date, options).format('YYYY-MM-DD HH:mm:ss.SSS');
+};
 
 
 
@@ -34,13 +39,15 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(4000)
     },
     Dta_hora_cadastro: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATE
+      /*  defaultValue: DataTypes.NOW */
     },
     Dta_hora_ultimo_acesso: {
       type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW
     },
     Desc_tipo_sistema_versao: {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING(4000),
     },
     Id_licenca: {
       type: DataTypes.STRING(4000)
@@ -62,13 +69,12 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false,
     hasTrigger: true,
     tableName: 'Dispositivoes',
-    /*   hooks: {
-        beforeCreate: (user) => {
-          var date = require('../utils/date');
-          user.updated_at = date.getActualDate();
-        }
- 
-      } */
+    hooks: {
+      beforeCreate: (dispositivos) => {
+        console.log('Vendo o que vem antes de cadastrar', dispositivos)
+      }
+
+    }
   });
 
 
