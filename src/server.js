@@ -32,6 +32,8 @@ const ConcorrentesController = require('../src/controllers/ConcorrentesControlle
 const OperadorsController = require('../src/controllers/OperadorsController');
 const InventariosController = require('../src/controllers/InventariosController')
 const LocalsController = require('../src/controllers/LocalsController');
+const DispositivosController = require('../src/controllers/DispositivosController');
+
 
 
 /**
@@ -187,6 +189,9 @@ app.get('/inventarios', ensureAuthenticated, InventariosController.list)
 app.post('/locals', ensureAuthenticated, LocalsController.store)
 app.get('/locals', ensureAuthenticated, LocalsController.list)
 app.get('/locals-add', ensureAuthenticated, LocalsController.form)
+app.get('/dispositivos', ensureAuthenticated, DispositivosController.list)
+app.post('/dispositivos', ensureAuthenticated, DispositivosController.store)
+app.get('/dispositivos-add', ensureAuthenticated, DispositivosController.form)
 
 
 /**fim */

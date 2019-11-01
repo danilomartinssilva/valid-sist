@@ -38,9 +38,7 @@ class ConcorrontesController {
         Id_empresa: info_user.Id_empresa
       }
     })
-    if (!concorrentes.length) {
-      return res.json({ status: false, message: 'Erro ao listar concorrentess' }).status(200)
-    }
+
     return res.render('concorrente/list', { concorrentes })
 
   }

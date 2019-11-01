@@ -13,7 +13,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h3 class="titulorel">Cadastro de Concorrentes</h3>
+        <h3 class="titulorel">Dispositivos</h3>
       </div>
     </div>
   </div>
@@ -42,19 +42,39 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th scope="col">Código</th>
             <th scope="col">Descrição</th>
+            <th scope="col">Grupo</th>
+            <th scope="col">Licença</th>
+            <th scope="col">Serial</th>
+            <th scope="col">Sistema</th>
+            <th scope="col">Data Cadastro</th>
+            <th scope="col">Data Último Acesso</th>
+
+
+
           </tr>
         </thead>
         <tbody>
-          <% for(var i=0; i<concorrentes.length; i++) {%>
+          <% for(var i=0; i<dispositivos.length; i++) {%>
 
           <tr>
             <td>
-              <%= concorrentes[i].Id %>
+              <%= dispositivos[i].Descricao %>
             </td>
             <td>
-              <%= concorrentes[i].Descricao %>
+              <%= dispositivos[i].Desc_grupo %>
+            </td>
+            <td>
+              <%= dispositivos[i].Id_licenca %>
+            </td>
+            <td>
+              <%= dispositivos[i].Serial %>
+            </td>
+            <td>
+              <%= dispositivos[i].Dta_hora_cadastro %>
+            </td>
+            <td>
+              <%= dispositivos[i].Dta_hora_ultimo_acesso %>
             </td>
           </tr>
 
@@ -78,7 +98,7 @@
         </tbody>
       </table>
       <div class="col-md-2 col-sm-12">
-        <a href="/lojas-add-form" class="btn btn-success" style="margin-left: 0px;">Adicionar</a>
+        <a href="/dispositivos-add" class="btn btn-success" style="margin-left: 0px;">Adicionar</a>
       </div>
 
     </div>
